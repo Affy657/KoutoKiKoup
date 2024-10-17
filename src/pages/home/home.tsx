@@ -1,10 +1,16 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import './home.css';
 
 const knives = [
-  { name: 'Couteau', price: '$78.50', img: 'link-to-image' },
-  { name: 'Couto', price: '$44.99', img: 'link-to-image' },
-  { name: 'Kouto', price: '$32.80', img: 'link-to-image' },
+  { id: 1, name: 'Couteau', price: '$78.50', img: 'public/logo.svg' },
+  { id: 2, name: 'Couto', price: '$44.99', img: 'public/logo.svg' },
+  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
+  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
+  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
+  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
+  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
+  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
+  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
 ];
 
 function HomePage() {
@@ -16,12 +22,12 @@ function HomePage() {
       </header>
 
       <section className="knives-grid">
-        {knives.map((knife, index) => (
-          <div key={index} className="knife-card">
+        {knives.map((knife) => (
+          <Link to={`/product/${knife.id}`} key={knife.id} className="knife-card">
             <img src={knife.img} alt={knife.name} className="knife-img" />
             <h3>{knife.name}</h3>
             <p>{knife.price}</p>
-          </div>
+          </Link>
         ))}
       </section>
     </div>
