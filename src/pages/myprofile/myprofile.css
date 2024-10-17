@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #ffe8cc;
+}
+
+.homepage {
+    text-align: center;
+}
+
+.header {
+    background-color: #ff613a;
+    padding: 30px 0;
+    position: relative;
+}
+
+.site-title {
+    font-size: 48px;
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.search-bar {
+    margin-top: 10px;
+    padding: 10px;
+    width: 300px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.knives-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.knife-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.2s;
+    text-decoration: none;
+}
+
+.knife-card:hover {
+    transform: scale(1.05);
+}
+
+.knife-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.knife-card h3 {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.knife-card p {
+    font-size: 18px;
+    color: #ff613a;
+    font-weight: bold;
+}
+
