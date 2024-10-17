@@ -1,13 +1,15 @@
 import { useParams } from 'react-router-dom';
+import useSWR from 'swr';
+import { fetchKnifeById } from '../../api/api';
 import './product.css';
 
 const ProductPage = () => {
   const { id } = useParams(); 
-  const knife = id ? knifeData.find((k) => k.id === parseInt(id)) : undefined;
+  const { data: knife, error } = useSWR(id ? `/knives/${id}` : null, () => id ? fetchKnifeById(id) : null);
 
-  if (!knife) {
-    return <p>Kouto not found!</p>;
-  }
+  if (error) return <p>Failed to load Kouto</p>;
+  if (!knife) return <p>Loading...</p>;
+
   return (
     <div className="product-page">
       <header className="header">
@@ -37,7 +39,7 @@ const ProductPage = () => {
   );
 };
 
-const knifeData = [
+/*const knifeData = [
   {
     id: 1,
     name: 'SAB1 Knife',
@@ -64,6 +66,6 @@ const knifeData = [
     weight: 180,
     length: 25,
   },
-];
+];*/
 
 export default ProductPage;
