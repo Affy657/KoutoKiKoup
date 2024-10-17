@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import HomePage from './pages/home/home.tsx'
 import ProductPage from './pages/product/product.tsx'
+import AppAddProduct from './pages/addproduct/addproduct.tsx';
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/product/:id" element={<ProductPage />} />
+        <Route path='/addproduct' element={<AppAddProduct />} />
       </Routes>
     </Router>
   </StrictMode>
