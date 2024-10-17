@@ -39,12 +39,12 @@ const AddProductPage = () => {
     };
 
     return (
-        <div className="product-page">
+        <div className="addproduct-page">
             <header className="header">
                 <h1 className="site-title">Kouto Ki Koup</h1>
             </header>
 
-            <section className="product-details">
+            <section className="addproduct-details">
                 <div className="form-group">
                     <TextField
                         id="title"
