@@ -1,41 +1,56 @@
-import { useState } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import './addproduct.css';
 import TextField from '@mui/material/TextField';
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const AddProductPage = () => {
+
+    const navigate = useNavigate();
+
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
-    const [handle, setHandle] = useState(0);
-    const [blade, setBlade] = useState(0);
+    const [handle, setHandle] = useState('');
+    const [blade, setBlade] = useState('');
     const [sharpness, setSharpness] = useState(0);
     const [durability, setDurability] = useState(0);
     const [weight, setWeight] = useState(0);
     const [length, setLength] = useState(0);
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState<File | null>(null);
 
-    const handleImageChange = (e) => {
-        setImage(e.target.files[0]);
+    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setImage(e.target.files[0]);
+        }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-        const formData = new FormData();
-        formData.append('title', title);
-        formData.append('price', price);
-        formData.append('description', description);
-        formData.append('handle', handle);
-        formData.append('blade', blade);
-        formData.append('sharpness', sharpness);
-        formData.append('durability', durability);
-        formData.append('weight', weight);
-        formData.append('length', length);
-        formData.append('image', image);
+        const formData = {
+            name: title,
+            price: price,
+            description: description,
+            handle: handle,
+            blade: blade,
+            sharpness: sharpness,
+            durability: durability,
+            weight: weight,
+            length: length,
+            image: image
+        }
 
-        console.log('Product submitted', {
-            title, price, description, handle, blade, sharpness, durability, weight, length, image
-        });
+        try {
+            console.log('formData:', formData);
+            await axios.post('http://localhost:3000/knives', formData);
+            alert('Product created successfully');
+            navigate('/');
+
+        } catch (err) {
+            const error = err as { response?: { data: string }, message: string };
+            console.error('Error submitting product:', error.response ? error.response.data : error.message);
+        }
     };
 
     return (
@@ -92,30 +107,18 @@ const AddProductPage = () => {
                     <TextField
                         id="handle"
                         label="Handle"
-                        type="number"
                         variant="standard"
                         value={handle}
                         sx={{ padding: '10px 10px' }}
-                        onChange={(e) => setHandle(Number(e.target.value))}
-                        slotProps={{
-                            inputLabel: {
-                                shrink: true,
-                            },
-                        }}
+                        onChange={(e) => setHandle(e.target.value)}
                     />
                     <TextField
                         id="blade"
                         label="Blade"
-                        type="number"
                         variant="standard"
                         value={blade}
                         sx={{ padding: '10px 10px' }}
-                        onChange={(e) => setBlade(Number(e.target.value))}
-                        slotProps={{
-                            inputLabel: {
-                                shrink: true,
-                            },
-                        }}
+                        onChange={(e) => setBlade(e.target.value)}
                     />
                     <TextField
                         id="sharpness"
