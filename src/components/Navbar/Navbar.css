@@ -1,0 +1,22 @@
+.header {
+  background-color: #ff613a;
+  padding: 5px 20px;
+  height: 120px;
+}
+
+.site-title {
+  font-size: 48px;
+  color: #fff;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.search-bar {
+  padding: 10px;
+  width: 400px;
+  border: none;
+  border-radius: 20px;
+  font-size: 19px;
+  height: 30px;
+}

@@ -1,80 +1,77 @@
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: #ffe8cc;
-  }
-  
-  .product-page {
-    text-align: center;
-    background: #ffe8cc;
-  }
-  
-  .header {
-    background-color: #ff613a;
-    padding: 20px 0;
-  }
-  
-  .site-title {
-    font-size: 48px;
-    color: #fff;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-  }
-  
-  .product-details {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 40px;
-  }
-  
-  .image-section {
-    flex: 1;
-    max-width: 300px;
-    padding: 20px;
-  }
-  
-  .knife-image {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .info-section {
-    flex: 2;
-    max-width: 500px;
-    padding: 20px;
-    text-align: left;
-  }
-  
-  .info-section h2 {
-    font-size: 36px;
-    color: #333;
-  }
-  
-  .price {
-    font-size: 28px;
-    color: #ff613a;
-    font-weight: bold;
-  }
-  
-  .description {
-    margin: 15px 0;
-    font-size: 18px;
-    color: #666;
-  }
-  
-  .attributes {
-    margin-top: 20px;
-  }
-  
-  .attributes p {
-    font-size: 16px;
-    color: #444;
-    margin: 5px 0;
-  }
+.product-page {
+  text-align: center;
+  background: #ffe8cc;
+}
+
+.product-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.image-section {
+  flex: 1;
+  max-width: 300px;
+  padding: 20px;
+}
+
+.knife-image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.info-section {
+  flex: 2;
+  max-width: 500px;
+  padding: 20px;
+  text-align: left;
+}
+
+.info-section h2 {
+  font-size: 36px;
+  color: #333;
+}
+
+.price {
+  font-size: 28px;
+  color: #ff613a;
+  font-weight: bold;
+}
+
+.description {
+  margin: 15px 0;
+  font-size: 18px;
+  color: #666;
+}
+
+.attributes {
+  margin-top: 20px;
+}
+
+.attributes p {
+  font-size: 16px;
+  color: #444;
+  margin: 5px 0;
+}
+
+.edit-product-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #ff613a;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.edit-product-button:hover {
+  background-color: #f4542c;
+}
 
 .loading-image-product {
   max-width: 40vw;
