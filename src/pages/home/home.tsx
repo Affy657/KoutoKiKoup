@@ -2,18 +2,8 @@ import { Link } from 'react-router-dom';
 import useSWR from 'swr';
 import { fetchKnives } from '../../api/api';
 import './home.css';
-
-/*const knives = [
-  { id: 1, name: 'Couteau', price: '$78.50', img: 'public/logo.svg' },
-  { id: 2, name: 'Couto', price: '$44.99', img: 'public/logo.svg' },
-  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
-  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
-  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
-  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
-  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
-  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
-  { id: 3, name: 'Kouto', price: '$32.80', img: 'public/logo.svg' },
-];*/
+import {Fab} from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
 
 function HomePage() {
   const { data: knives, error } = useSWR('/knives', fetchKnives);
@@ -36,6 +26,11 @@ function HomePage() {
             <p>{knife.price}</p>
           </Link>
         ))}
+        <Link to="/addproduct" className="add-knife-card">
+          <Fab color="secondary" aria-label="add">
+              <AddIcon />
+          </Fab>
+        </Link>
       </section>
     </div>
   );

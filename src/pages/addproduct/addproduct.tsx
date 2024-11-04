@@ -3,6 +3,8 @@ import './addproduct.css';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { Fab } from '@mui/material';
+import NavigationIcon from '@mui/icons-material/Navigation';
 
 const AddProductPage = () => {
 
@@ -53,11 +55,29 @@ const AddProductPage = () => {
         }
     };
 
+    const handleBack = () => {
+        navigate('/');
+    }
+
     return (
         <div className="addproduct-page">
             <header className="header">
                 <h1 className="site-title">Kouto Ki Koup</h1>
             </header>
+
+            <Fab
+                variant="extended"
+                onClick={handleBack}
+                style={{
+                    position: "fixed",
+                    left: "10%",
+                    top: "30%",
+                    transform: "translateY(-50%)"
+                }}
+            >
+                <NavigationIcon style={{ transform: "rotate(-90deg)" }} />
+            </Fab>
+
 
             <section className="addproduct-details">
                 <div className="form-group">
