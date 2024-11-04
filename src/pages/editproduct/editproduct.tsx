@@ -65,7 +65,7 @@ const EditProductPage = () => {
     try {
       const dataToSubmit = { ...formData, image };
       await updateKnife(id!, dataToSubmit);
-      alert('Product updated successfully');
+      console.log('Product updated successfully');
       navigate(`/product/${id}`);
     } catch (error) {
       console.error('Error updating product:', error);
@@ -75,7 +75,7 @@ const EditProductPage = () => {
   const handleDelete = async () => {
     try {
       await deleteKnife(id!);
-      alert('Product deleted successfully');
+      console.log('Product deleted successfully');
       navigate('/');
     } catch (error) {
       console.error('Error deleting product:', error);

@@ -39,7 +39,7 @@ const AddProductPage = () => {
     try {
       const dataToSubmit = { ...formData, image }; 
       await addKnife(dataToSubmit);
-      alert('Product created successfully');
+      console.log('Product created successfully');
       navigate('/');
     } catch (error) {
       console.error('Error submitting product:', error);

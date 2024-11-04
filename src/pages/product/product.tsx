@@ -1,14 +1,19 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import useSWR from 'swr';
 import { fetchKnifeById } from '../../api/api';
 import './product.css';
 
 const ProductPage = () => {
   const { id } = useParams(); 
+  const navigate = useNavigate();
   const { data: knife, error } = useSWR(id ? `/knives/${id}` : null, () => id ? fetchKnifeById(id) : null);
 
   if (error) return <p>Failed to load Kouto</p>;
   if (!knife) return <p>Loading...</p>;
+
+  const handleEditClick = () => {
+    navigate(`/editproduct/${id}`);
+  };
 
   return (
     <div className="product-page">
@@ -33,6 +38,9 @@ const ProductPage = () => {
             <p><strong>Weight:</strong> {knife.weight}g</p>
             <p><strong>Length:</strong> {knife.length}cm</p>
           </div>
+        <div className="button-section">
+          <button className="edit-product-button" onClick={handleEditClick}>Edit</button>
+        </div>
         </div>
       </section>
     </div>
