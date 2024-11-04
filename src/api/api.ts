@@ -1,8 +1,25 @@
-import axios from 'axios';
+import axios, {
+  type AxiosResponse,
+  type AxiosRequestConfig,
+  type AxiosError
+} from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000', 
+  baseURL: 'http://localhost:3000',
+  headers: {
+    'Content-Type': 'application/json',
+  }
 });
+
+export function performRequest<T, D>(options: AxiosRequestConfig<D>, callback: (response: AxiosResponse<T, D> | null, error: AxiosError<T, D> | null) => void): (reason: string) => void {
+  const arborteController = new AbortController();
+
+  api(options)
+    .then((response) => callback(response, null))
+    .catch((error) => callback(null, error));
+
+  return (reason: string) => arborteController.abort(reason);
+}
 
 export const fetchKnives = async () => {
   const response = await api.get('/knives');
