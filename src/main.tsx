@@ -22,15 +22,17 @@ createRoot(document.getElementById('root')!).render(
         revalidateOnFocus: false,
       }}
     ></SWRConfig>
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/product/:id" element={<ProductPage />} />
-        <Route path='/addproduct' element={<AppAddProduct />} />
-        <Route path='/editproduct/:id' element={<EditProductPage />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </Router>
+    <UserProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path='/addproduct' element={<AppAddProduct />} />
+          <Route path='/editproduct/:id' element={<EditProductPage />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
+    </UserProvider>
   </StrictMode>
 )
