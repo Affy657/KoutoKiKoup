@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import useSWR from 'swr';
 import { fetchKnives } from '../../api/api';
 import './home.css';
+import { Knife } from '../../type';
 
 /*const knives = [
   { id: 1, name: 'Couteau', price: '$78.50', img: 'public/logo.svg' },
@@ -16,22 +17,17 @@ import './home.css';
 ];*/
 
 function HomePage() {
-  const { data: knives, error } = useSWR('/knives', fetchKnives);
+  const { data: knives, error } = useSWR<Knife[]>('/knives', fetchKnives);
 
   if (error) return <p>Failed to load Kouto</p>;
   if (!knives) return <p>Loading...</p>;
 
   return (
     <div className="homepage">
-      <header className="header">
-        <h1 className="site-title">Kouto Ki Koup</h1>
-        <input className="search-bar" type="text" placeholder="Search Kouto..." />
-      </header>
-
       <section className="knives-grid">
-        {knives.map((knife: { _id: number; name: string; price: string; image: string }) => (
+        {knives.map((knife) => (
           <Link to={`/product/${knife._id}`} key={knife._id} className="knife-card">
-            <img src={knife.image} alt={knife.name} className="knife-img" />
+            <img src={knife.images[0]} alt={knife.name} className="knife-img" />
             <h3>{knife.name}</h3>
             <p>{knife.price}</p>
           </Link>

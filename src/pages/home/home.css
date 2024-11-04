@@ -4,33 +4,6 @@ body {
     background-color: #ffe8cc;
   }
   
-  .homepage {
-    text-align: center;
-  }
-  
-  .header {
-    background-color: #ff613a;
-    padding: 30px 0;
-    position: relative;
-  }
-  
-  .site-title {
-    font-size: 48px;
-    color: #fff;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-  }
-  
-  .search-bar {
-    margin-top: 10px;
-    padding: 10px;
-    width: 300px;
-    border: none;
-    border-radius: 20px;
-    font-size: 16px;
-  }
-  
   .knives-grid {
     display: flex;
   flex-wrap: wrap;

@@ -12,9 +12,6 @@ const ProductPage = () => {
 
   return (
     <div className="product-page">
-      <header className="header">
-        <h1 className="site-title">Kouto Ki Koup</h1>
-      </header>
 
       <section className="product-details">
         <div className="image-section">

@@ -11,20 +11,6 @@ body {
     background: #ffe8cc;
 }
 
-/* Header styles */
-.header {
-    background-color: #ff613a;
-    padding: 20px 0;
-}
-
-.site-title {
-    font-size: 48px;
-    color: #fff;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
-
 /* Product details layout with two sections */
 .product-details {
     justify-content: space-between;
