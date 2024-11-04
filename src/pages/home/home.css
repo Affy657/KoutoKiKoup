@@ -1,11 +1,5 @@
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #ffe8cc;
-  }
-  
-  .knives-grid {
-    display: flex;
+.knives-grid {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 40px;
