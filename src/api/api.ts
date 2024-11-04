@@ -13,6 +13,7 @@ const api = axios.create({
 
 export function performRequest<T, D>(options: AxiosRequestConfig<D>, callback: (response: AxiosResponse<T, D> | null, error: AxiosError<T, D> | null) => void): (reason: string) => void {
   const arborteController = new AbortController();
+  options.signal = arborteController.signal;
 
   api(options)
     .then((response) => callback(response, null))
