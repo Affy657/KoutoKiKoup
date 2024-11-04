@@ -39,33 +39,4 @@ const ProductPage = () => {
   );
 };
 
-/*const knifeData = [
-  {
-    id: 1,
-    name: 'SAB1 Knife',
-    image: 'public/logo.svg',
-    description: 'A high-quality chef knife with superior sharpness and durability.',
-    handle: 'Wood',
-    blade: 'Stainless Steel',
-    sharpness: 9,
-    price: 79.99,
-    durability: 8,
-    weight: 200,
-    length: 30,
-  },
-  {
-    id: 2,
-    name: 'SNIFE',
-    image: 'public/logo.svg',
-    description: 'A precision knife for everyday use.',
-    handle: 'Plastic',
-    blade: 'Carbon Steel',
-    sharpness: 8,
-    price: 44.99,
-    durability: 7,
-    weight: 180,
-    length: 25,
-  },
-];*/
-
 export default ProductPage;

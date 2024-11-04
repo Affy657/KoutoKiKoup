@@ -6,7 +6,7 @@ body {
 }
 
 /* Page structure */
-.addproduct-page {
+.editproduct-page {
     text-align: center;
     background: #ffe8cc;
 }
@@ -25,37 +25,26 @@ body {
     letter-spacing: 3px;
 }
 
-/* Main form container */
-.addproduct-details {
+/* Product details layout */
+.editproduct-details {
     justify-content: space-between;
     align-items: center;
     padding: 30px;
     margin-top: 40px;
     margin-left: 20%;
-    gap: 40px; 
+    gap: 40px;
     flex: 1;
     max-width: 50%;
-    background-color: #fff; 
+    background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Group style for form components */
-.form-group {
-    margin-bottom: 5%; 
-    align-items: center;
-    padding: 5px 0;
-}
-
-/* Responsive design for smaller screens */
+/* Responsive */
 @media (max-width: 768px) {
-    .product-details {
+    .editproduct-details {
         flex-direction: column;
-    }
-
-    .left-section,
-    .right-section {
-        max-width: 100%;
-        margin-bottom: 20px;
+        max-width: 90%;
+        margin-left: 5%;
     }
 }
