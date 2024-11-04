@@ -2,13 +2,16 @@ import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 import { fetchKnifeById } from '../../api/api';
 import './product.css';
+import NotFoundImage from "../../assets/404.svg";
+import Loading from '../../assets/loading.svg';
+
 
 const ProductPage = () => {
   const { id } = useParams(); 
   const { data: knife, error } = useSWR(id ? `/knives/${id}` : null, () => id ? fetchKnifeById(id) : null);
 
-  if (error) return <p>Failed to load Kouto</p>;
-  if (!knife) return <p>Loading...</p>;
+  if (error) return <div className="loading-image-product"><img src={NotFoundImage} alt="404 Not Found" /></div>;
+  if (!knife) return <div className="loading-image-product"><img src={Loading} alt="Loading" /></div>;
 
   return (
     <div className="product-page">
@@ -38,34 +41,5 @@ const ProductPage = () => {
     </div>
   );
 };
-
-/*const knifeData = [
-  {
-    id: 1,
-    name: 'SAB1 Knife',
-    image: 'public/logo.svg',
-    description: 'A high-quality chef knife with superior sharpness and durability.',
-    handle: 'Wood',
-    blade: 'Stainless Steel',
-    sharpness: 9,
-    price: 79.99,
-    durability: 8,
-    weight: 200,
-    length: 30,
-  },
-  {
-    id: 2,
-    name: 'SNIFE',
-    image: 'public/logo.svg',
-    description: 'A precision knife for everyday use.',
-    handle: 'Plastic',
-    blade: 'Carbon Steel',
-    sharpness: 8,
-    price: 44.99,
-    durability: 7,
-    weight: 180,
-    length: 25,
-  },
-];*/
 
 export default ProductPage;

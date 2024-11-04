@@ -75,4 +75,13 @@ body {
     color: #444;
     margin: 5px 0;
   }
-  
+
+.loading-image-product {
+  max-width: 40vw;
+  max-height: 40vh;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
