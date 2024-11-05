@@ -1,5 +1,6 @@
 import React from 'react';
-import './SubmitButton.css'; 
+import {Button} from "@mui/material";
+import DoneIcon from '@mui/icons-material/Done';
 
 type SubmitButtonProps = {
   onClick: () => void;
@@ -7,9 +8,19 @@ type SubmitButtonProps = {
 };
 
 const SubmitButton: React.FC<SubmitButtonProps> = ({ onClick, label }) => (
-  <button type="button" className="submit-button" onClick={onClick}>
+  <Button
+      variant="contained"
+      color="success"
+      onClick={onClick}
+      startIcon={<DoneIcon />}
+      sx={{
+        padding: '10px 15px',
+        margin: '10px 0',
+        marginRight: '20px',
+      }}
+  >
     {label}
-  </button>
+  </Button>
 );
 
 export default SubmitButton;
