@@ -1,9 +1,9 @@
 import { useState, useEffect, ChangeEvent } from 'react';
 import './editproduct.css';
-import ProductForm from '../../components/ProductForm';
-import ImageUpload from '../../components/ImageUpload';
-import SubmitButton from '../../components/SubmitButton';
-import DeleteButton from '../../components/DeleteButton';
+import ProductForm from '../../components/ProductForm/ProductForm.tsx';
+import ImageUpload from '../../components/ImageUpload/ImageUpload.tsx';
+import SubmitButton from '../../components/SubmitButton/SubmitButton.tsx';
+import DeleteButton from '../../components/DeleteButton/DeleteButton.tsx';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchKnifeById, updateKnife, deleteKnife } from '../../api/api';
 
