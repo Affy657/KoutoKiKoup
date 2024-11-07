@@ -10,13 +10,15 @@ export interface BaseUserContext {
   token: string | null;
   setCurrent: (user: BaseUser) => void;
   setToken: (token: string) => void;
+  handleLogOut: () => void;
 }
 
 const BASE_USER: BaseUserContext = {
   current: null,
   token: null,
   setCurrent: () => {},
-  setToken: () => {}
+  setToken: () => {},
+  handleLogOut: () => {}
 }
 
 export const UserContext = createContext(BASE_USER);
@@ -39,6 +41,13 @@ export function UserProvider({ children }: UserProviderProps) {
     setToken(token);
   }
 
+  const handleLogOut = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    setCurrent(null);
+    setToken(null);
+  }
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
@@ -53,7 +62,8 @@ export function UserProvider({ children }: UserProviderProps) {
     current,
     token,
     setCurrent: handleSetCurrent,
-    setToken: handleSetToken
+    setToken: handleSetToken,
+    handleLogOut
   }
 
   return (
