@@ -8,9 +8,20 @@ import AddIcon from '@mui/icons-material/Add';
 import Notfound from "../../components/404/404.tsx";
 import WaitLoading from "../../components/Loading/Loading.tsx";
 import IsEmpty from "../../components/Empty/Empty.tsx";
+import SearchAppBar from '../../components/search-bar/search-bar';
+import { useState } from 'react';
+
+
 
 const HomePage = () => {
-    const { data: knives, error } = useSWR<Knife[]>('/knives', fetchKnives);
+  const [filteredKnives, setFilteredKnives] = useState(null);
+  const { data: knives, error } = useSWR<Knife[]>('/knives', fetchKnives);
+
+  const handleSearchResults = (results) => {
+  setFilteredKnives(results);
+};
+
+const displayKnives = filteredKnives || knives;
 
     if (error) return <Notfound />;
     if (!knives) return <WaitLoading/>;
@@ -20,8 +31,11 @@ const HomePage = () => {
             {knives.length === 0 && (
                 <IsEmpty />
             )}
+            <div className="search-bar">
+              <SearchAppBar onSearchResults={handleSearchResults} />
+            </div>
             <section className="knives-grid">
-                {knives.map((knife) => (
+                {displayKnives && displayKnives.map((knife) => (
                     <Link to={`/product/${knife._id}`} key={knife._id} className="knife-card">
                         <img src={knife.images[0]} alt={knife.name} className="knife-img" />
                         <h3>{knife.name}</h3>

@@ -68,6 +68,7 @@ const EditProductPage = () => {
       console.log('Product updated successfully');
       navigate(`/product/${id}`);
     } catch (error) {
+      alert('You need to be logged in to edit a product');
       console.error('Error updating product:', error);
     }
   };
@@ -78,6 +79,7 @@ const EditProductPage = () => {
       console.log('Product deleted successfully');
       navigate('/');
     } catch (error) {
+      alert('You need to be logged in to delete a product');
       console.error('Error deleting product:', error);
     }
   };

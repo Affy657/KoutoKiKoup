@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 
 type ProductFormProps = {
-  title: string;
+  name: string;
   price: number;
   description: string;
   handle: string;
@@ -15,7 +15,7 @@ type ProductFormProps = {
 };
 
 const ProductForm: React.FC<ProductFormProps> = ({
-  title,
+  name,
   price,
   description,
   handle,
@@ -29,13 +29,13 @@ const ProductForm: React.FC<ProductFormProps> = ({
   return (
     <div className="form-group">
       <TextField
-        id="title"
-        label="Title"
+        id="name"
+        label="Name"
         variant="standard"
         sx={{ padding: '10px 10px' }}
-        value={title}
+        value={name}
         onChange={onChange}
-        name="title"
+        name="name"
       />
       <TextField
         id="description"
