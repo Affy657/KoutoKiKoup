@@ -21,7 +21,6 @@ const Navbar = () => {
         <Grid>
           <Grid container size="grow" className="center" alignItems="center" gap={2}>
             <Grid alignItems="center">
-              <input className="search-bar" type="text" placeholder="Search Kouto..." />
             </Grid>
             <Grid alignItems="center">
               <Link to="/login">

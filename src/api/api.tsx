@@ -28,3 +28,14 @@ export const deleteKnife = async (id: string | number) => {
   const response = await api.delete(`/knives/${id}`);
   return response.data;
 };
+
+export const filterKnives = async (params: Record<string, string>) => {
+  const queryString = new URLSearchParams(params).toString();
+  const response = await api.get(`/knives/filter?${queryString}`);
+  return response.data;
+}
+
+export const autocompleteKnives = async (term: string) => {
+  const response = await api.get(`/knives/autocomplete?term=${encodeURIComponent(term)}`);
+  return response.data;
+}

@@ -1,0 +1,67 @@
+.search-container {
+    position: relative;
+    border-radius: 12px; 
+    background-color: rgba(255, 255, 255, 0.65);
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .search-container:hover {
+    background-color: rgba(255, 255, 255, 0.90);
+  }
+  
+  .search-container.sm {
+    margin-left: 8px;
+    width: auto;
+  }
+  
+  .search-icon-wrapper {
+    padding: 0 16px;
+    height: 100%;
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .styled-input-base {
+    color: inherit;
+    width: 100%;
+  }
+  
+  .styled-input-base .MuiInputBase-input {
+    padding: 8px 8px 8px 0;
+    padding-left: calc(1em + 32px); 
+    transition: width 0.3s ease;
+  }
+  
+  .styled-input-base .MuiInputBase-input.sm {
+    width: 12ch;
+  }
+  
+  .styled-input-base .MuiInputBase-input.sm:focus {
+    width: 20ch;
+  }
+
+.suggestions-container {
+    position: absolute;
+    background-color: rgba(255, 255, 255);
+    border-radius: 4px;
+    width: 90%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+    top: 100%;
+    left: 35px;
+  }
+  
+  .suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .suggestion-item:hover {
+    background-color: #f0f0f0;
+  }
+  

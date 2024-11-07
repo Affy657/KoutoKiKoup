@@ -11,12 +11,3 @@
   text-transform: uppercase;
   letter-spacing: 3px;
 }
-
-.search-bar {
-  padding: 10px;
-  width: 400px;
-  border: none;
-  border-radius: 20px;
-  font-size: 19px;
-  height: 30px;
-}
