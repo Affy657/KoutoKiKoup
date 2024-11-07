@@ -40,10 +40,10 @@ export const addKnife = async (knifeData: any, userId: string | number) => {
   const dataToSubmit = { ...knifeData, userId };
   console.log(dataToSubmit);
 
-  const response = await api.post('/knives', dataToSubmit, {
+  const response = await api.post('/knives', knifeData, {
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
     },
   });
   return response.data;
