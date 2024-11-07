@@ -1,8 +1,8 @@
 import { useState, ChangeEvent } from 'react';
 import './addproduct.css';
-import ProductForm from '../../components/ProductForm';
-import ImageUpload from '../../components/ImageUpload';
-import SubmitButton from '../../components/SubmitButton';
+import ProductForm from '../../components/ProductForm/ProductForm.tsx';
+import ImageUpload from '../../components/ImageUpload/ImageUpload.tsx';
+import SubmitButton from '../../components/SubmitButton/SubmitButton.tsx';
 import { useNavigate } from 'react-router-dom';
 import { addKnife } from '../../api/api';
 import { Fab } from '@mui/material';

@@ -50,13 +50,3 @@ body {
   margin: 10%;
   margin-top: 5%;
 }
-
-.loading-image {
-  max-width: 40vw;
-  max-height: 40vh;
-  width: auto;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  padding-bottom: 20px;
-}

@@ -11,6 +11,7 @@ import ProductPage from './pages/product/product.tsx'
 import AppAddProduct from './pages/addproduct/addproduct.tsx';
 import EditProductPage from './pages/editproduct/editproduct.tsx';
 import Login from './pages/login/Login.tsx';
+import NotFound from './components/404/404.tsx';
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
@@ -31,6 +32,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path='/addproduct' element={<AppAddProduct />} />
           <Route path='/editproduct/:id' element={<EditProductPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </UserProvider>
