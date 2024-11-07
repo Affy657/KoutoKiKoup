@@ -1,3 +1,45 @@
+
+  .image-section {
+    flex: 1;
+    max-width: 300px;
+    padding: 20px;
+  }
+  
+  .knife-image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .info-section {
+    flex: 2;
+    max-width: 500px;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .info-section h2 {
+    font-size: 36px;
+    color: #333;
+  }
+  
+  .price {
+    font-size: 28px;
+    color: #ff613a;
+    font-weight: bold;
+  }
+  
+  .attributes {
+    margin-top: 20px;
+  }
+  
+  .attributes p {
+    font-size: 16px;
+    color: #444;
+    margin: 5px 0;
+  }
+  
 .product-page {
   text-align: center;
   background: #ffe8cc;
@@ -8,37 +50,6 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 40px;
-}
-
-.image-section {
-  flex: 1;
-  max-width: 300px;
-  padding: 20px;
-}
-
-.knife-image {
-  width: 100%;
-  height: auto;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.info-section {
-  flex: 2;
-  max-width: 500px;
-  padding: 20px;
-  text-align: left;
-}
-
-.info-section h2 {
-  font-size: 36px;
-  color: #333;
-}
-
-.price {
-  font-size: 28px;
-  color: #ff613a;
-  font-weight: bold;
 }
 
 .description {

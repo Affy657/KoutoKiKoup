@@ -2,14 +2,17 @@ import { useParams, useNavigate } from 'react-router-dom';
 import useSWR from 'swr';
 import { fetchKnifeById } from '../../api/api';
 import './product.css';
+import Loading from "../../components/Loading/Loading.tsx";
+import Notfound from "../../components/404/404.tsx";
+
 
 const ProductPage = () => {
   const { id } = useParams(); 
   const navigate = useNavigate();
   const { data: knife, error } = useSWR(id ? `/knives/${id}` : null, () => id ? fetchKnifeById(id) : null);
 
-  if (error) return <p>Failed to load Kouto</p>;
-  if (!knife) return <p>Loading...</p>;
+  if (error) return <Notfound />;
+  if (!knife) return <Loading />;
 
   const handleEditClick = () => {
     navigate(`/editproduct/${id}`);

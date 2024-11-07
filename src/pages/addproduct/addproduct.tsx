@@ -1,10 +1,12 @@
 import { useState, ChangeEvent } from 'react';
 import './addproduct.css';
-import ProductForm from '../../components/ProductForm';
-import ImageUpload from '../../components/ImageUpload';
-import SubmitButton from '../../components/SubmitButton';
+import ProductForm from '../../components/ProductForm/ProductForm.tsx';
+import ImageUpload from '../../components/ImageUpload/ImageUpload.tsx';
+import SubmitButton from '../../components/SubmitButton/SubmitButton.tsx';
 import { useNavigate } from 'react-router-dom';
 import { addKnife } from '../../api/api';
+import { Fab } from '@mui/material';
+import NavigationIcon from '@mui/icons-material/Navigation';
 
 const AddProductPage = () => {
   const navigate = useNavigate();
@@ -37,7 +39,7 @@ const AddProductPage = () => {
 
   const handleSubmit = async () => {
     try {
-      const dataToSubmit = { ...formData, image }; 
+      const dataToSubmit = { ...formData, image };
       await addKnife(dataToSubmit);
       console.log('Product created successfully');
       navigate('/');
@@ -46,8 +48,24 @@ const AddProductPage = () => {
     }
   };
 
+    const handleBack = () => {
+        navigate('/');
+    }
+
   return (
     <div className="addproduct-page">
+        <Fab
+            variant="extended"
+            onClick={handleBack}
+            style={{
+                position: "fixed",
+                left: "10%",
+                top: "30%",
+                transform: "translateY(-50%)"
+            }}
+        >
+            <NavigationIcon style={{ transform: "rotate(-90deg)" }} />
+        </Fab>
          <section className="addproduct-details">
         <ProductForm {...formData} onChange={handleChange} />
         <ImageUpload image={image} onImageChange={handleImageChange} />

@@ -1,6 +1,5 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
-//import './ProductForm.css';
 
 type ProductFormProps = {
   title: string;
