@@ -58,8 +58,7 @@ const Navbar = () => {
                     onClose={handleClose}
                     MenuListProps={{ 'aria-labelledby': 'basic-button' }}
                 >
-                  <MenuItem onClick={() => handleMenuItemClick('/profile')}>Profile</MenuItem>
-                  <MenuItem onClick={() => handleMenuItemClick('/account')}>My account</MenuItem>
+                  <MenuItem onClick={() => handleMenuItemClick('/login')}>Login</MenuItem>
                   <MenuItem onClick={() => handleMenuItemClick('/logout')}>Logout</MenuItem>
                 </Menu>
               </Grid>
