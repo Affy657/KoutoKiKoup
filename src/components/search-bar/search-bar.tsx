@@ -29,13 +29,13 @@ export default function SearchAppBar({ onSearchResults }: SearchAppBarProps) {
     setInputValue(event.target.value);
   };
 
-  const handleSearch = async (event) => {
+  const handleSearch = async (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       let results;
       if (inputValue) {
-        results = await filterKnives({ name: inputValue });  
+        results = await filterKnives({ name: inputValue });
       } else {
-        results = await fetchKnives();  
+        results = await fetchKnives();
       }
       onSearchResults(results);
     }

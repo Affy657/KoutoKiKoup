@@ -55,6 +55,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
         value={price}
         onChange={onChange}
         name="price"
+        inputProps={{ step: "0.01", min: "0.01" }}
       />
       <TextField
         id="handle"
@@ -83,6 +84,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
         value={sharpness}
         onChange={onChange}
         name="sharpness"
+        inputProps={{ min: "0", max:"10" }}
       />
       <TextField
         id="durability"
@@ -93,6 +95,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
         value={durability}
         onChange={onChange}
         name="durability"
+        inputProps={{ min: "0", max:"10" }}
       />
       <TextField
         id="weight"
@@ -103,6 +106,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
         value={weight}
         onChange={onChange}
         name="weight"
+        inputProps={{ step: "0.01", min: "0.01" }}
       />
       <TextField
         id="length"
@@ -113,6 +117,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
         value={length}
         onChange={onChange}
         name="length"
+        inputProps={{ step: "0.01",min: "0.01" }}
       />
     </div>
   );
