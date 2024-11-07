@@ -12,7 +12,7 @@ const EditProductPage = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    title: '',
+    name: '',
     price: 0,
     description: '',
     handle: '',
@@ -29,7 +29,7 @@ const EditProductPage = () => {
       try {
         const product = await fetchKnifeById(id!);
         setFormData({
-          title: product.name,
+          name: product.name,
           price: product.price,
           description: product.description,
           handle: product.handle,
