@@ -12,14 +12,12 @@ import SearchAppBar from '../../components/search-bar/search-bar';
 import { useState } from 'react';
 
 const HomePage = () => {
-    const [filteredKnives, setFilteredKnives] = useState<Knife[] | null>(null); // Définir le type de filteredKnives
+    const [filteredKnives, setFilteredKnives] = useState<Knife[] | null>(null);
     const { data: knives, error } = useSWR<Knife[]>('/knives', fetchKnives);
 
-    const handleSearchResults = (results: string[]) => {
-        const filtered = knives?.filter(knife => results.includes(knife.name)) || null;
-        setFilteredKnives(filtered);
+    const handleSearchResults = (results: Knife[] | null) => {
+        setFilteredKnives(results);
     };
-
 
     const displayKnives = filteredKnives || knives;
 
@@ -33,13 +31,17 @@ const HomePage = () => {
                 <SearchAppBar onSearchResults={handleSearchResults} />
             </div>
             <section className="knives-grid">
-                {displayKnives && displayKnives.map((knife) => (
-                    <Link to={`/product/${knife._id}`} key={knife._id} className="knife-card">
-                        <img src={knife.images?.[0] || '/default-image.jpg'} alt={knife.name} className="knife-img" />
-                        <h3>{knife.name}</h3>
-                        <p>{knife.price}</p>
-                    </Link>
-                ))}
+                {displayKnives && displayKnives.length > 0 ? (
+                    displayKnives.map((knife) => (
+                        <Link to={`/product/${knife._id}`} key={knife._id} className="knife-card">
+                            <img src={knife.images?.[0] || '/default-image.jpg'} alt={knife.name} className="knife-img" />
+                            <h3>{knife.name}</h3>
+                            <p>{knife.price}</p>
+                        </Link>
+                    ))
+                ) : (
+                    <p>No knives found.</p>
+                )}
                 <Link to="/addproduct" className="add-knife-card">
                     <Fab color="secondary" aria-label="add">
                         <AddIcon />
