@@ -36,9 +36,9 @@ export default function Knife3D() {
       new RoomEnvironment(),
       0.01
     ).texture;
-    
-    const camera = new THREE.PerspectiveCamera(100, m3DCWidth / m3DCHeight, 1000, 0);
-    camera.position.set(5, 2, 5);
+
+      const camera = new THREE.PerspectiveCamera(100, m3DCWidth / m3DCHeight, 0.1, 1000);
+      camera.position.set(5, 2, 5);
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.target.set(2, 0.5, 0);
@@ -51,21 +51,21 @@ export default function Knife3D() {
 
     const loader = new GLTFLoader();
     loader.load('toy_knife.glb', (gltf) => {
-      model = gltf.scene;
+          model = gltf.scene;
 
-      scene.add(model);
+          scene.add(model);
 
-      model.scale.set(0.02, 0.02, 0.02);
-      model.position.set(0, 0, 0);
-      model.rotateX(-Math.PI / 2);
+          model.scale.set(0.02, 0.02, 0.02);
+          model.position.set(0, 0, 0);
+          model.rotateX(-Math.PI / 2);
 
-      mixer = new THREE.AnimationMixer(model);
-      mixer.clipAction(gltf.animations[0]).play();
+          mixer = new THREE.AnimationMixer(model);
+          mixer.clipAction(gltf.animations[0]).play();
 
-      animate();
-    }, (xhr) => {
-      console.log('[📦] %s / %s (%s%) barbers scissors\' model downloaded', xhr.loaded, xhr.total, xhr.loaded / xhr.total * 100)
-    }, console.error);
+          animate();
+      }, (xhr) => {
+          console.log('[📦] %s / %s (%s%) barbers scissors\' model downloaded', xhr.loaded, xhr.total, xhr.loaded / xhr.total * 100)
+      }, console.error);
 
     window.onresize = () => {
       const newM3DCWidth = (model3DContainerRef.current?.clientWidth ?? 1);
