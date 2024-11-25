@@ -23,7 +23,7 @@ const AddProductPage = () => {
         weight: 0,
         length: 0,
     });
-    const [image, setImage] = useState<File | null>(null);
+    const [image, setImage] = useState<FileList | null>(null);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -35,7 +35,7 @@ const AddProductPage = () => {
 
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
-            setImage(e.target.files[0]);
+            setImage(e.target.files);
         }
     };
 
@@ -46,11 +46,16 @@ const AddProductPage = () => {
         }
 
         try {
-            const dataToSubmit = { ...formData, image };
-            await addKnife(dataToSubmit, userId._id);
+            const dataToSubmit = { ...formData, images: image };
+            const knifeData = new FormData()
+            for (const [key, value] of Object.entries(dataToSubmit)) {
+                knifeData.append(key, value);
+            }
+            await addKnife(knifeData, userId._id);
             console.log('Product created successfully');
             navigate('/');
         } catch (error) {
+            alert('Error submitting product');
             console.error('Error submitting product:', error);
         }
     };
