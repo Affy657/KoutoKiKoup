@@ -38,11 +38,14 @@ function ImageUpload({ image, onImageChange }: ImageUploadProps) {
                 Upload Image
                 <VisuallyHiddenInput
                     type="file"
+                    multiple={true}
                     onChange={onImageChange}
                     accept={'image/*'}
                 />
             </Button>
-            {image && <p>Selected file: {image[0].name}</p>}
+            {image && Array.from(image).map((file, index) => (
+                <p key={index}>Selected file: {file.name}</p>
+            ))}
         </Box>
     );
 }
