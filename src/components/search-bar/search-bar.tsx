@@ -4,26 +4,27 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { filterKnives, autocompleteKnives, fetchKnives } from '../../api/api';
 import './search-bar.css';
+import { Knife } from '../../type';
 
 interface SearchAppBarProps {
-  readonly onSearchResults: (results: string[]) => void;
+  readonly onSearchResults: (results: Knife[] | null) => void;
 }
 
 export default function SearchAppBar({ onSearchResults }: SearchAppBarProps) {
   const [inputValue, setInputValue] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchSuggestions = async () => {
       if (inputValue) {
         const results = await autocompleteKnives(inputValue);
-        setSuggestions(results);
+        setSuggestions(results.slice(0, 5));
       } else {
         setSuggestions([]);
       }
     };
     fetchSuggestions();
-}, [inputValue]);
+  }, [inputValue]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -31,15 +32,25 @@ export default function SearchAppBar({ onSearchResults }: SearchAppBarProps) {
 
   const handleSearch = async (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      let results;
-      if (inputValue) {
-        results = await filterKnives({ name: inputValue });
-      } else {
-        results = await fetchKnives();
-      }
-      onSearchResults(results);
+      handleSearchResults();
     }
   };
+
+  const handleSuggestionClick = (suggestion: string) => {
+    setInputValue(suggestion);
+    handleSearchResults();
+  };
+
+  const handleSearchResults = async () => {
+    if (inputValue) {
+      const results = await filterKnives({ name: inputValue });
+      onSearchResults(results); 
+    } else {
+      const allKnives = await fetchKnives();
+      onSearchResults(allKnives); 
+    }
+    setSuggestions([]);
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -58,7 +69,11 @@ export default function SearchAppBar({ onSearchResults }: SearchAppBarProps) {
         {suggestions.length > 0 && (
           <div className="suggestions-container">
             {suggestions.map((suggestion, index) => (
-              <div key={index} className="suggestion-item" onClick={() => setInputValue(suggestion)}>
+              <div
+                key={index}
+                className="suggestion-item"
+                onClick={() => handleSuggestionClick(suggestion)} 
+              >
                 {suggestion}
               </div>
             ))}
