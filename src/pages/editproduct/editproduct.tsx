@@ -22,7 +22,22 @@ const EditProductPage = () => {
     weight: 0,
     length: 0,
   });
-  const [image, setImage] = useState<File | null>(null);
+  const [image, setImage] = useState<FileList | null>(null);
+
+  type CustomChangeEvent =
+      | ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+      | {
+    target: {
+      name?: string;
+      value: unknown;
+    };
+  };
+
+  const numericFields = ['price', 'sharpness', 'durability', 'weight', 'length'] as const;
+
+  const isNumericField = (field: string): field is keyof Pick<typeof formData, 'price' | 'sharpness' | 'durability' | 'weight' | 'length'> => {
+    return numericFields.includes(field as any);
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -47,17 +62,21 @@ const EditProductPage = () => {
     fetchProduct();
   }, [id]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: name === 'price' || name === 'sharpness' || name === 'durability' || name === 'weight' || name === 'length' ? Number(value) : value
-    });
+  const handleChange = (e: CustomChangeEvent) => {
+    if ('target' in e && e.target.name) {
+      const { name, value } = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: isNumericField(name) ? Number(value) : value,
+      }));
+    }
   };
+
+
 
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setImage(e.target.files[0]);
+      setImage(e.target.files);
     }
   };
 

@@ -5,13 +5,12 @@ import ImageUpload from '../../components/ImageUpload/ImageUpload.tsx';
 import SubmitButton from '../../components/SubmitButton/SubmitButton.tsx';
 import { useNavigate } from 'react-router-dom';
 import { addKnife } from '../../api/api';
-import { Fab } from '@mui/material';
-import NavigationIcon from '@mui/icons-material/Navigation';
 import { UserContext } from "../../contexts/Users";
 
 const AddProductPage = () => {
     const navigate = useNavigate();
     const { current: userId } = useContext(UserContext);
+
     const [formData, setFormData] = useState({
         name: '',
         price: 0,
@@ -25,12 +24,17 @@ const AddProductPage = () => {
     });
     const [image, setImage] = useState<FileList | null>(null);
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (
+        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    ) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: ['price', 'sharpness', 'durability', 'weight', 'length'].includes(name) ? Number(value) : value
-        });
+
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: ['price', 'sharpness', 'durability', 'weight', 'length'].includes(name)
+                ? Number(value)
+                : value,
+        }));
     };
 
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,17 +44,26 @@ const AddProductPage = () => {
     };
 
     const handleSubmit = async () => {
-        if (userId === null) {
+        if (!userId) {
             console.error('User ID is null');
             return;
         }
 
         try {
             const dataToSubmit = { ...formData, images: image };
-            const knifeData = new FormData()
+
+            const knifeData = new FormData();
             for (const [key, value] of Object.entries(dataToSubmit)) {
-                knifeData.append(key, value);
+                if (value === null) continue;
+                if (key === 'images' && value instanceof FileList) {
+                    Array.from(value).forEach((file) => {
+                        knifeData.append(key, file);
+                    });
+                } else {
+                    knifeData.append(key, String(value));
+                }
             }
+
             await addKnife(knifeData, userId._id);
             console.log('Product created successfully');
             navigate('/');
@@ -60,24 +73,8 @@ const AddProductPage = () => {
         }
     };
 
-    const handleBack = () => {
-        navigate('/');
-    }
-
     return (
         <div className="addproduct-page">
-            <Fab
-                variant="extended"
-                onClick={handleBack}
-                style={{
-                    position: "fixed",
-                    left: "10%",
-                    top: "30%",
-                    transform: "translateY(-50%)"
-                }}
-            >
-                <NavigationIcon style={{ transform: "rotate(-90deg)" }} />
-            </Fab>
             <section className="addproduct-details">
                 <ProductForm {...formData} onChange={handleChange} />
                 <ImageUpload image={image} onImageChange={handleImageChange} />

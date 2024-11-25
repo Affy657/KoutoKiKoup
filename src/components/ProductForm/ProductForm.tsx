@@ -15,7 +15,7 @@ interface ProductFormProps {
     durability: number;
     weight: number;
     length: number;
-    onChange: (e: ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>) => void;
+    onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
 }
 
 const ProductForm: React.FC<ProductFormProps> = ({
@@ -48,14 +48,16 @@ const ProductForm: React.FC<ProductFormProps> = ({
         "other"
     ];
 
-    const handleSelectChange = (event: SelectChangeEvent<string>) => {
+    const handleSelectChange = (event: SelectChangeEvent) => {
+        const { name, value } = event.target;
         onChange({
             target: {
-                name: event.target.name,
-                value: event.target.value,
-            }
-        } as ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>);
+                name,
+                value,
+            },
+        } as ChangeEvent<HTMLInputElement | HTMLSelectElement>);
     };
+
 
     return (
         <div className="form-group">

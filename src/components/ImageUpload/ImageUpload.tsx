@@ -5,7 +5,7 @@ import {ChangeEvent} from "react";
 import Box from "@mui/material/Box";
 
 type ImageUploadProps = {
-  image: File | null;
+  image: FileList | null;
   onImageChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -42,7 +42,7 @@ function ImageUpload({ image, onImageChange }: ImageUploadProps) {
                     accept={'image/*'}
                 />
             </Button>
-            {image && <p>Selected file: {image.name}</p>}
+            {image && <p>Selected file: {image[0].name}</p>}
         </Box>
     );
 }
