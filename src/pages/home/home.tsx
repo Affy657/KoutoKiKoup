@@ -36,7 +36,7 @@ const HomePage = () => {
                         <Link to={`/product/${knife._id}`} key={knife._id} className="knife-card">
                             <img src={knife.images?.[0] || '/default-image.jpg'} alt={knife.name} className="knife-img" />
                             <h3>{knife.name}</h3>
-                            <p>{knife.price}</p>
+                            <p>${knife.price.toFixed(2)}</p>
                         </Link>
                     ))
                 ) : (
