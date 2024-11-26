@@ -44,7 +44,9 @@ const Navbar = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                position: 'relative',
+                position: 'fixed',
+                top: 0,
+                zIndex: 1000,
             }}
         >
             <Box

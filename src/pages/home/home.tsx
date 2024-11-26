@@ -3,8 +3,6 @@ import useSWR from 'swr';
 import { fetchKnives } from '../../api/api';
 import './home.css';
 import { Knife } from '../../type';
-import { Fab } from "@mui/material";
-import AddIcon from '@mui/icons-material/Add';
 import Notfound from "../../components/404/404.tsx";
 import WaitLoading from "../../components/Loading/Loading.tsx";
 import IsEmpty from "../../components/Empty/Empty.tsx";
@@ -42,11 +40,6 @@ const HomePage = () => {
                 ) : (
                     <p>No knives found.</p>
                 )}
-                <Link to="/addproduct" className="add-knife-card">
-                    <Fab color="secondary" aria-label="add">
-                        <AddIcon />
-                    </Fab>
-                </Link>
             </section>
         </div>
     );
