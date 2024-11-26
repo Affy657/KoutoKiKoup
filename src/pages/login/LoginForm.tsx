@@ -133,7 +133,7 @@ export default function LoginForm() {
                 variant="contained"
                 color="primary"
                 size="large"
-                sx={{ width: '100%' }}
+                sx={{ width: '100%', marginBottom: '3%' }}
                 type="submit"
                 onSubmit={handleSubmit(RequestType.Login)}
                 onClick={handleSubmit(RequestType.Login)}
@@ -142,7 +142,7 @@ export default function LoginForm() {
                 variant="outlined"
                 color="primary"
                 size="large"
-                sx={{ width: '100%' }}
+                sx={{ width: '100%', marginBottom: '3%' }}
                 onSubmit={handleSubmit(RequestType.Register)}
                 onClick={handleSubmit(RequestType.Register)}
               >Register</Button>

@@ -1,7 +1,7 @@
 import { useState, useEffect, type MouseEvent, useContext } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Box, Button, Menu, MenuItem } from '@mui/material';
-import { NoAccounts, AccountCircle } from '@mui/icons-material';
+import { AccountCircle } from '@mui/icons-material';
 import { UserContext } from '../../contexts/Users';
 
 import logo from '../../assets/logo.png';
@@ -79,7 +79,12 @@ const Navbar = () => {
                 {!current && (
                     <>
                         <Link to="/login" className="link">
-                            <NoAccounts sx={{ fontSize: 40 }} htmlColor="white" />
+                            <Button
+                                variant="outlined"
+                                sx={{padding: '10px 20px', borderColor: '#fff', color: '#fff' }}
+                            >
+                                Login
+                            </Button>
                         </Link>
                     </>
                 )}
@@ -108,7 +113,7 @@ const Navbar = () => {
                             onClose={handleClose}
                             MenuListProps={{ 'aria-labelledby': 'basic-button' }}
                         >
-                            <MenuItem onClick={() => handleMenuItemClick('/profile')}>Profile</MenuItem>
+                            <MenuItem onClick={() => handleMenuItemClick('/profile')}>My profile</MenuItem>
                             <MenuItem onClick={() => LogOut()}>Logout</MenuItem>
                         </Menu>
                     </>
