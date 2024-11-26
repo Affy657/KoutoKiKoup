@@ -1,13 +1,13 @@
 .knife-image {
   width: 100%;
   height: auto;
-  border-radius: 15px;
+  border-radius: 3px;
 }
 
 .knife-thumbnail {
   width: 100%;
   height: auto;
-  border-radius: 15px;
+  border-radius: 3px;
   margin: 10px 0;
   cursor: pointer;
 }
