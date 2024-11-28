@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useContext, useState} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useSWR from 'swr';
 import { Container, Box, Grid2, Stack, Paper, Rating, Typography, Button } from '@mui/material';
@@ -13,12 +13,14 @@ import Notfound from "../../components/404/404.tsx";
 
 // Styles
 import './product.css';
+import {UserContext} from "../../contexts/Users.tsx";
 
 const ProductPage = () => {
   let { id } = useParams();
 
   const navigate = useNavigate();
   const [indexImage, setIndexImage] = useState(0);
+  const { current } = useContext(UserContext);
 
   id ??= 'not_found';
 
@@ -107,18 +109,20 @@ const ProductPage = () => {
                 </Box>
               </Stack>
               <Box>
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor: '#ff613a',
-                    transition: 'background-color 0.3s ease',
-                    '&:hover': {
+                {current && (
+                  <Button
+                    variant="contained"
+                    sx={{
                       backgroundColor: '#ff613a',
-                    },
-                    marginTop: 2,
-                  }}
-                  onClick={handleEditClick}
-                >Edit</Button>
+                      transition: 'background-color 0.3s ease',
+                      '&:hover': {
+                        backgroundColor: '#ff613a',
+                      },
+                      marginTop: 2,
+                    }}
+                    onClick={handleEditClick}
+                  >Edit</Button>
+                )}
               </Box>
             </Box>
           </Grid2>
