@@ -75,7 +75,7 @@ export default function LoginForm() {
           setError(err.response?.data?.message ?? err.message);
           return;
         }
-  
+
         if (response) {
           setToken(response.data.token);
           const user = {
